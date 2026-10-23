@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syntax Shell | Software Studio & Developer Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'Fira Code', monospace; }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 min-h-screen selection:bg-emerald-500 selection:text-black">
+
+  <!-- Header -->
+  <header class="border-b border-neutral-800 bg-neutral-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-emerald-400 mono text-xl font-bold">&gt;_</span>
+        <span class="mono text-lg font-bold tracking-tight">Syntax Shell</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-neutral-400">
+        <a href="#services" class="hover:text-white transition">Services</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#community" class="hover:text-white transition">Ecosystem</a>
+        <a href="mailto:thesyntaxshell@gmail.com" class="px-4 py-2 rounded-md bg-neutral-100 text-neutral-900 font-medium hover:bg-neutral-200 transition">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-400 mb-8">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Available for Custom MVP Builds & Automation
+    </div>
+    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+      Engineering Intelligent Systems & <br />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+        Workflow Automations.
+      </span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-neutral-400 text-lg mb-10 leading-relaxed">
+      Syntax Shell builds full-stack web applications, custom Python automations, and scalable backends. Transforming complex operations into fast, automated code.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="mailto:thesyntaxshell@gmail.com" class="px-6 py-3 rounded-lg bg-emerald-500 text-black font-semibold hover:bg-emerald-400 transition">
+        Start a Project
+      </a>
+      <a href="https://github.com/SyntaxShell" target="_blank" class="px-6 py-3 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 transition">
+        View GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="max-w-5xl mx-auto px-6 py-20 border-t border-neutral-900">
+    <h2 class="text-xs uppercase mono tracking-widest text-emerald-400 mb-2">Capabilities</h2>
+    <h3 class="text-3xl font-bold text-white mb-10">What We Build</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+        <span class="text-xs mono text-neutral-500 mb-3 block">Next.js / Node / React</span>
+        <h4 class="text-lg font-semibold text-white mb-2">Full-Stack Web Apps</h4>
+        <p class="text-sm text-neutral-400 leading-relaxed">Rapid MVP builds, customer-facing web applications, and admin panels built with clean architectural foundations.</p>
+      </div>
+      <div class="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+        <span class="text-xs mono text-neutral-500 mb-3 block">Python / APIs / Scrapers</span>
+        <h4 class="text-lg font-semibold text-white mb-2">Workflow Automations</h4>
+        <p class="text-sm text-neutral-400 leading-relaxed">Custom scraping pipelines, data extractors, and automated business workflows to eliminate repetitive manual labor.</p>
+      </div>
+      <div class="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+        <span class="text-xs mono text-neutral-500 mb-3 block">PostgreSQL / Cloud / APIs</span>
+        <h4 class="text-lg font-semibold text-white mb-2">System Integrations</h4>
+        <p class="text-sm text-neutral-400 leading-relaxed">Scalable REST APIs, third-party webhook plumbing (Stripe, WhatsApp, CRMs), and optimized database design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section id="projects" class="max-w-5xl mx-auto px-6 py-20 border-t border-neutral-900">
+    <h2 class="text-xs uppercase mono tracking-widest text-emerald-400 mb-2">Proof of Work</h2>
+    <h3 class="text-3xl font-bold text-white mb-8">Selected Projects</h3>
+    <div class="rounded-xl border border-neutral-800 bg-neutral-900/30 p-8 flex flex-col md:flex-row gap-6 items-start justify-between">
+      <div>
+        <div class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-xs mono mb-3">
+          HTML5 Canvas / Game Dev
+        </div>
+        <h4 class="text-2xl font-bold text-white mb-2">Problematic Silence</h4>
+        <p class="text-neutral-400 text-sm max-w-xl leading-relaxed">
+          A cinematic 2D action game built purely with JavaScript and HTML5 Canvas, featuring custom physics, puzzle-solving mechanics, and atmospheric world design.
+        </p>
+      </div>
+      <a href="https://github.com/SyntaxShell/Problematic-Silence" target="_blank" class="px-4 py-2 text-sm rounded border border-neutral-700 hover:border-neutral-500 transition text-white whitespace-nowrap">
+        View Repository &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Ecosystem -->
+  <section id="community" class="max-w-5xl mx-auto px-6 py-20 border-t border-neutral-900">
+    <h2 class="text-xs uppercase mono tracking-widest text-emerald-400 mb-2">Ecosystem</h2>
+    <h3 class="text-3xl font-bold text-white mb-8">Connect Across Channels</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="https://github.com/SyntaxShell" target="_blank" class="p-5 rounded-lg border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900 transition text-center">
+        <div class="font-semibold text-white">GitHub</div>
+        <div class="text-xs text-neutral-500 mt-1">@SyntaxShell</div>
+      </a>
+      <a href="https://www.youtube.com/@TheSyntaxShell" target="_blank" class="p-5 rounded-lg border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900 transition text-center">
+        <div class="font-semibold text-white">YouTube</div>
+        <div class="text-xs text-neutral-500 mt-1">@TheSyntaxShell</div>
+      </a>
+      <a href="https://www.linkedin.com/in/syntax-shell-577057403" target="_blank" class="p-5 rounded-lg border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900 transition text-center">
+        <div class="font-semibold text-white">LinkedIn</div>
+        <div class="text-xs text-neutral-500 mt-1">Syntax Shell</div>
+      </a>
+      <a href="https://www.reddit.com/r/SyntaxShell/" target="_blank" class="p-5 rounded-lg border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900 transition text-center">
+        <div class="font-semibold text-white">Reddit Hub</div>
+        <div class="text-xs text-neutral-500 mt-1">r/SyntaxShell</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-neutral-900 py-10 text-center text-xs text-neutral-600 mono">
+    © 2026 Syntax Shell. Built for reliability and performance.
+  </footer>
+
+</body>
+</html>
