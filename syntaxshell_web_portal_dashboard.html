@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyntaxShell | Elite Tech & Interview Preparation Platform</title>
+  <meta name="description" content="Accuracy is better than Perfection. Master software engineering, DSA, and system design with free elite roadmaps and community channels by SyntaxShell.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070b14',
+              surface: '#0d1322',
+              card: '#111a2e',
+              border: '#1e293b',
+              accent: '#38bdf8',
+              cyan: '#00f2fe',
+              silver: '#cbd5e1',
+              dim: '#64748b'
+            }
+          },
+          boxShadow: {
+            'neon': '0 0 25px -5px rgba(56, 189, 248, 0.35)',
+            'neon-lg': '0 0 45px -8px rgba(0, 242, 254, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom cyber grid & scanlines effect */
+    .cyber-bg {
+      background-color: #070b14;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .glass-card {
+      background: rgba(17, 26, 46, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    /* Subtle pulse animation for glowing badges */
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .pulse-glow {
+      animation: subtlePulse 4s ease-in-out infinite;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070b14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+  </style>
+</head>
+
+<body class="cyber-bg text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="border-b border-sky-950/80 bg-brand-surface/90 px-4 py-2 text-xs md:text-sm text-center font-medium backdrop-blur-md text-slate-400 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-400 border border-sky-500/30">FREE ARCHIVE</span>
+    <span>All interview roadmaps & study paths are 100% free. Unlock deep guides with a quick login.</span>
+    <button onclick="openAuthModal('login')" class="underline text-sky-400 hover:text-sky-300 font-semibold ml-1 cursor-pointer">Login Now &rarr;</button>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#070b14]/90 backdrop-blur-xl border-b border-slate-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo & Wolf Crest -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="relative w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 to-brand-card border border-sky-500/30 group-hover:border-sky-400 transition-all shadow-neon">
+            <!-- Sleek Wolf Crest Vector Symbol -->
+            <svg class="w-8 h-8 text-sky-400 group-hover:text-cyan-300 transition-colors drop-shadow" viewBox="0 0 100 100" fill="currentColor">
+              <!-- Geometric Cyber Wolf Silhouette with embedded R-arc -->
+              <path d="M50 8 L65 24 L58 32 L82 28 L72 45 L90 52 L68 70 L62 90 L48 76 L36 86 L32 64 L16 52 L30 42 L20 26 L38 28 Z" opacity="0.15" />
+              <path d="M48 10 C54 18, 64 24, 76 25 C66 31, 62 38, 64 45 C73 42, 85 46, 88 53 C77 56, 70 65, 68 75 C60 68, 54 68, 48 74 C44 64, 40 56, 30 52 C38 48, 42 40, 38 32 C44 32, 47 24, 48 10 Z" fill="url(#wolfGrad)" />
+              <path d="M40 38 C48 38, 56 42, 56 50 C56 58, 46 62, 42 62 L42 78 L34 78 L34 38 L40 38 Z M42 46 L42 54 C46 54, 48 53, 48 50 C48 47, 46 46, 42 46 Z" fill="#070b14" opacity="0.8" />
+              <defs>
+                <linearGradient id="wolfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="50%" stop-color="#94a3b8" />
+                  <stop offset="100%" stop-color="#38bdf8" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-2xl tracking-wider text-white">SYNTAX<span class="text-sky-400">SHELL</span></span>
+            </div>
+            <p class="text-[10px] tracking-widest text-slate-400 font-mono uppercase">Accuracy is better than Perfection</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+          <a href="#roadmaps" class="text-slate-300 hover:text-sky-400 transition-colors">Roadmaps</a>
+          <a href="#prep-hub" class="text-slate-300 hover:text-sky-400 transition-colors">Interview Prep</a>
+          <a href="#channels" class="text-slate-300 hover:text-sky-400 transition-colors">Public Channels</a>
+          <a href="#cheatsheets" class="text-slate-300 hover:text-sky-400 transition-colors">Cheatsheets</a>
+          <a href="#about" class="text-slate-300 hover:text-sky-400 transition-colors">About</a>
+        </nav>
+
+        <!-- Right Side: Social Quicklinks & Auth CTA -->
+        <div class="flex items-center gap-3">
+          <!-- Social Icons (GitHub, YouTube, Reddit, LinkedIn) -->
+          <div class="hidden lg:flex items-center gap-2 border-r border-slate-800 pr-3 mr-1">
+            <a href="https://github.com/SyntaxShell" target="_blank" rel="noopener noreferrer" title="SyntaxShell GitHub" class="p-2 text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.youtube.com/@TheSyntaxShell" target="_blank" rel="noopener noreferrer" title="SyntaxShell YouTube" class="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800/80 rounded-lg transition-all">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.reddit.com/user/SyntaxShell/" target="_blank" rel="noopener noreferrer" title="SyntaxShell Reddit Profile" class="p-2 text-slate-400 hover:text-orange-400 hover:bg-slate-800/80 rounded-lg transition-all">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/syntax-shell-577057403/" target="_blank" rel="noopener noreferrer" title="SyntaxShell LinkedIn" class="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-800/80 rounded-lg transition-all">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- Dynamic Auth Area -->
+          <div id="authActionsContainer">
+            <!-- Will be dynamically updated by JS based on login status -->
+            <button onclick="openAuthModal('login')" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-neon font-mono">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+              <span>Member Sign In</span>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Toggle Button -->
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 md:hidden text-slate-400 hover:text-white rounded-lg hover:bg-slate-800">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800/80 bg-brand-surface px-4 pt-3 pb-6 space-y-3">
+      <a href="#roadmaps" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-sky-400 font-medium">Roadmaps</a>
+      <a href="#prep-hub" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-sky-400 font-medium">Interview Prep</a>
+      <a href="#channels" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-sky-400 font-medium">Public Channels</a>
+      <a href="#cheatsheets" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-sky-400 font-medium">Cheatsheets</a>
+      <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-sky-400 font-medium">About</a>
+      <div class="flex items-center gap-4 pt-3 border-t border-slate-800">
+        <a href="https://github.com/SyntaxShell" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+        <a href="https://www.youtube.com/@TheSyntaxShell" target="_blank" class="text-slate-400 hover:text-red-400"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+        <a href="https://www.reddit.com/user/SyntaxShell/" target="_blank" class="text-slate-400 hover:text-orange-400"><i data-lucide="message-square" class="w-5 h-5"></i></a>
+        <a href="https://www.linkedin.com/in/syntax-shell-577057403/" target="_blank" class="text-slate-400 hover:text-sky-400"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION WITH BRAND BANNER AESTHETIC -->
+    <section id="home" class="relative overflow-hidden pt-12 pb-20 border-b border-slate-800/60">
+      <!-- Cyber Glow Orb Backgrounds -->
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sky-500/10 blur-[130px] pointer-events-none rounded-full"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left Column: Mission & Brand Callout -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-mono tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              <span>SYNTAXSHELL PROTOCOL // 100% OPEN KNOWLEDGE</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+              Master High-Impact Engineering with <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-300">Precision.</span>
+            </h1>
+
+            <p class="text-xl font-medium text-slate-300 italic border-l-2 border-sky-400 pl-4 py-1">
+              "Accuracy is better than Perfection"
+            </p>
+
+            <p class="text-base text-slate-400 max-w-2xl leading-relaxed">
+              SyntaxShell builds elite career roadmaps, system design blueprints, and coding interview preparation paths. All materials are completely free — preview the foundations right now or sign in to track progress and unlock deep repository solutions.
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#prep-hub" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 text-slate-950 font-bold text-sm tracking-wide flex items-center gap-2 shadow-neon hover:shadow-neon-lg hover:brightness-110 transition-all">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+                <span>Explore Free Curriculum</span>
+              </a>
+              <a href="#channels" class="px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-sm tracking-wide flex items-center gap-2 transition-all">
+                <i data-lucide="users" class="w-4 h-4 text-sky-400"></i>
+                <span>Community Hub</span>
+              </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-lg">
+              <div>
+                <p class="text-2xl font-bold font-mono text-white">150+</p>
+                <p class="text-xs text-slate-400 uppercase tracking-wider">DSA Patterns</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold font-mono text-sky-400">100%</p>
+                <p class="text-xs text-slate-400 uppercase tracking-wider">Free Access</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold font-mono text-cyan-300">4+</p>
+                <p class="text-xs text-slate-400 uppercase tracking-wider">Public Portals</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Digital Brand Banner Replica -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl p-1 bg-gradient-to-b from-sky-500/30 via-slate-800/40 to-sky-900/20 shadow-neon">
+              <div class="bg-brand-card/95 rounded-[14px] p-6 border border-slate-800 space-y-6">
+                <!-- Banner Header mimicking the uploaded cover graphic -->
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-slate-950 border border-sky-500/40 flex items-center justify-center">
+                      <i data-lucide="shield" class="w-7 h-7 text-sky-400"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-mono text-sky-400 font-semibold tracking-wider">OFFICIAL PORTAL</div>
+                      <div class="text-lg font-bold text-white tracking-wide">SyntaxShell Core</div>
+                    </div>
+                  </div>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">LIVE</span>
+                </div>
+
+                <!-- Brand Features Matrix -->
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                  <div class="p-3 rounded-lg bg-brand-surface border border-slate-800 flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-4 h-4 text-sky-400"></i>
+                    <span>DSA Blueprints</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-brand-surface border border-slate-800 flex items-center gap-2">
+                    <i data-lucide="layers" class="w-4 h-4 text-cyan-400"></i>
+                    <span>System Design</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-brand-surface border border-slate-800 flex items-center gap-2">
+                    <i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i>
+                    <span>Shell & Cloud</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-brand-surface border border-slate-800 flex items-center gap-2">
+                    <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                    <span>FAANG Readiness</span>
+                  </div>
+                </div>
+
+                <!-- Banner Watermark quote -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-sky-950/40 to-slate-900 border border-sky-900/40 text-center">
+                  <p class="text-xs text-sky-300 font-mono italic">
+                    "Accuracy is better than Perfection"
+                  </p>
+                  <p class="text-[11px] text-slate-500 mt-1">Official contact: thesyntaxshell@gmail.com</p>
+                </div>
+
+                <!-- Live Quick Action -->
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+                  <span>Guest Access: Open</span>
+                  <button onclick="demoSignIn()" class="text-sky-400 hover:text-sky-300 font-medium underline flex items-center gap-1">
+                    <span>1-Click Quick Demo Login</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGGED IN USER INTERACTIVE DASHBOARD SECTION -->
+    <section id="userDashboardSection" class="hidden py-12 bg-brand-surface/70 border-b border-sky-500/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Dashboard Top Header Bar -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-l-4 border-l-sky-400">
+          <div class="space-y-1">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-sky-500/20 text-sky-300 font-semibold uppercase">Authorized Session</span>
+              <span id="dashUserRole" class="text-xs font-mono text-slate-400">Member Status: Active</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Welcome back, <span id="dashUserName" class="text-sky-400">Operator</span>
+            </h2>
+            <p class="text-sm text-slate-400">Full unlocked credentials, preparation progress tracking, and notes enabled.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="resetUserProgress()" class="px-3.5 py-2 text-xs font-mono text-slate-400 hover:text-red-400 border border-slate-800 hover:border-red-900 rounded-lg transition-colors">
+              Reset Progress
+            </button>
+            <button onclick="handleLogout()" class="px-4 py-2 text-xs font-mono text-slate-900 bg-sky-400 hover:bg-sky-300 font-bold rounded-lg transition-colors">
+              Sign Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">DSA Prep Progress</span>
+              <i data-lucide="code-2" class="w-4 h-4 text-sky-400"></i>
+            </div>
+            <div class="text-2xl font-bold font-mono text-white" id="statDsaText">4 / 12</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div id="statDsaBar" class="bg-sky-400 h-full rounded-full transition-all" style="width: 33%"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">System Design</span>
+              <i data-lucide="network" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <div class="text-2xl font-bold font-mono text-white" id="statSysText">2 / 8</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div id="statSysBar" class="bg-cyan-400 h-full rounded-full transition-all" style="width: 25%"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">Mock Question Sets</span>
+              <i data-lucide="file-check-2" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div class="text-2xl font-bold font-mono text-white" id="statMockText">3 / 6</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div id="statMockBar" class="bg-indigo-400 h-full rounded-full transition-all" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">Saved Study Notes</span>
+              <i data-lucide="bookmark" class="w-4 h-4 text-amber-400"></i>
+            </div>
+            <div class="text-2xl font-bold font-mono text-white" id="statNotesCount">0 Items</div>
+            <p class="text-[11px] text-slate-500 mt-2 font-mono">Synced locally in browser</p>
+          </div>
+        </div>
+
+        <!-- Personal Study Scratchpad / Quick Notes -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <i data-lucide="edit-3" class="w-5 h-5 text-sky-400"></i>
+              <h3 class="font-bold text-white text-lg">My Interview Prep Scratchpad & Target Companies</h3>
+            </div>
+            <span class="text-xs text-slate-400 font-mono">Auto-saved</span>
+          </div>
+          <textarea id="userNotesInput" oninput="saveUserNotes()" rows="3" placeholder="Jot down target companies, algorithms to revise today, or questions from YouTube..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-3 text-sm text-slate-200 focus:outline-none focus:border-sky-400 font-mono"></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE PREPARATION MODULES & GATED PREVIEW ARCHITECTURE -->
+    <section id="prep-hub" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-xs font-mono">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+            <span>CURATED INTERVIEW PREPARATION PATHS</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Comprehensive Tier-1 Interview Credentials
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Every candidate deserves top-tier knowledge without paying thousands. You can preview curriculum outlines anytime. Sign in for 100% free access to code patterns, system diagrams, and checklist tracking.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <button onclick="filterModules('all')" class="cat-btn active-cat px-4 py-2 rounded-lg text-xs font-mono font-medium border border-sky-400 bg-sky-500/20 text-sky-300" data-cat="all">All Paths</button>
+          <button onclick="filterModules('dsa')" class="cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 text-slate-400 hover:text-white" data-cat="dsa">DSA & Algorithms</button>
+          <button onclick="filterModules('system-design')" class="cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 text-slate-400 hover:text-white" data-cat="system-design">System Design</button>
+          <button onclick="filterModules('core-cs')" class="cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 text-slate-400 hover:text-white" data-cat="core-cs">Core CS & OS</button>
+          <button onclick="filterModules('devops')" class="cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 text-slate-400 hover:text-white" data-cat="devops">Cloud & DevOps</button>
+        </div>
+
+        <!-- Dynamic Grid of Interview Modules -->
+        <div id="modulesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ROADMAPS TIMELINE & CAREER PROGRESSION -->
+    <section id="roadmaps" class="py-16 bg-brand-surface/40 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-mono text-sky-400 uppercase tracking-widest">Mastery Roadmap</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">From Zero to Software Engineering Leader</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-md">
+            Follow our recommended 4-stage progression path. Built by industry veterans with emphasis on actual architectural accuracy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <!-- Step 1 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800 relative">
+            <span class="text-3xl font-extrabold font-mono text-slate-700/60 absolute top-4 right-4">01</span>
+            <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold mb-3 font-mono">P1</div>
+            <h3 class="font-bold text-white text-base">Algorithmic Precision</h3>
+            <p class="text-xs text-slate-400 mt-2">Master Sliding Window, Two Pointers, Dynamic Programming, and Graph Traversals without rote memorization.</p>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-sky-400">
+              <span>Target: 60 Days</span>
+              <span>150 Questions</span>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800 relative">
+            <span class="text-3xl font-extrabold font-mono text-slate-700/60 absolute top-4 right-4">02</span>
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold mb-3 font-mono">P2</div>
+            <h3 class="font-bold text-white text-base">Low-Level Design (LLD)</h3>
+            <p class="text-xs text-slate-400 mt-2">SOLID design principles, Design Patterns (Factory, Strategy, Observer) and schema modeling for high concurrency.</p>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-cyan-400">
+              <span>Target: 30 Days</span>
+              <span>12 Schemas</span>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800 relative">
+            <span class="text-3xl font-extrabold font-mono text-slate-700/60 absolute top-4 right-4">03</span>
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold mb-3 font-mono">P3</div>
+            <h3 class="font-bold text-white text-base">High-Level Design (HLD)</h3>
+            <p class="text-xs text-slate-400 mt-2">Rate limiters, distributed caching, Kafka event streaming, Sharding, and CAP theorem trade-off matrices.</p>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-indigo-400">
+              <span>Target: 45 Days</span>
+              <span>15 Case Studies</span>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800 relative">
+            <span class="text-3xl font-extrabold font-mono text-slate-700/60 absolute top-4 right-4">04</span>
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold mb-3 font-mono">P4</div>
+            <h3 class="font-bold text-white text-base">Mock & Behavioral Edge</h3>
+            <p class="text-xs text-slate-400 mt-2">Leadership principles, STAR method storytelling, compensation negotiation tactics, and live whiteboard simulation.</p>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+              <span>Target: 15 Days</span>
+              <span>100% Readiness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE PUBLICITY & COMMUNITY CHANNELS HUB -->
+    <section id="channels" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="text-xs font-mono text-sky-400 uppercase tracking-widest">Network & Publicity</span>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Connect with SyntaxShell Across the Web</h2>
+          <p class="text-sm text-slate-400">
+            Follow our official portals for video breakdowns, open-source code repositories, Reddit discussions, and professional career networking.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- GitHub Card -->
+          <a href="https://github.com/SyntaxShell" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-sky-500/50 transition-all group flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-sky-400/50 flex items-center justify-center transition-colors">
+                <i data-lucide="github" class="w-6 h-6 text-white group-hover:text-sky-400"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">GitHub Org</h3>
+                <p class="text-xs font-mono text-slate-400 mt-1">@SyntaxShell</p>
+                <p class="text-xs text-slate-400 mt-2">Open source codebases, cheatsheet markdown files, solution templates, and repo contributions.</p>
+              </div>
+            </div>
+            <div class="pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-sky-400">
+              <span>Visit Repositories</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+          <!-- YouTube Card -->
+          <a href="https://www.youtube.com/@TheSyntaxShell" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-red-500/50 transition-all group flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-red-400/50 flex items-center justify-center transition-colors">
+                <i data-lucide="youtube" class="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white group-hover:text-red-300 transition-colors">YouTube Channel</h3>
+                <p class="text-xs font-mono text-slate-400 mt-1">@TheSyntaxShell</p>
+                <p class="text-xs text-slate-400 mt-2">Deep system design animations, live mock coding walkthroughs, and career optimization strategies.</p>
+              </div>
+            </div>
+            <div class="pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-red-400">
+              <span>Subscribe Now</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+          <!-- Reddit Personal / Community Card -->
+          <a href="https://www.reddit.com/user/SyntaxShell/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-orange-500/50 transition-all group flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-orange-400/50 flex items-center justify-center transition-colors">
+                <i data-lucide="message-square" class="w-6 h-6 text-orange-400 group-hover:scale-110 transition-transform"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white group-hover:text-orange-300 transition-colors">Reddit Community</h3>
+                <p class="text-xs font-mono text-slate-400 mt-1">u/SyntaxShell</p>
+                <p class="text-xs text-slate-400 mt-2">Direct Q&A, peer resume reviews, company interview debriefs, and real-time tech discussion.</p>
+              </div>
+            </div>
+            <div class="pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-orange-400">
+              <span>Join Discussion</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a href="https://www.linkedin.com/in/syntax-shell-577057403/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-sky-500/50 transition-all group flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-sky-400/50 flex items-center justify-center transition-colors">
+                <i data-lucide="linkedin" class="w-6 h-6 text-sky-400 group-hover:scale-110 transition-transform"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">LinkedIn Network</h3>
+                <p class="text-xs font-mono text-slate-400 mt-1">Syntax Shell</p>
+                <p class="text-xs text-slate-400 mt-2">Industry networking, hiring announcements, engineering leadership articles, and referrals.</p>
+              </div>
+            </div>
+            <div class="pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-sky-400">
+              <span>Connect on LinkedIn</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Official Contact Card -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-sky-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Have a business proposal, partnership or question?</h3>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">Direct official inbox: <span class="text-sky-300">thesyntaxshell@gmail.com</span></p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="mailto:thesyntaxshell@gmail.com" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono transition-all">
+              Send Email Direct
+            </a>
+            <button onclick="copyToClipboard('thesyntaxshell@gmail.com')" class="px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs font-mono text-slate-300 transition-all flex items-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copyBtnText">Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHEATSHEETS & QUICK REFERENCE PREVIEWS -->
+    <section id="cheatsheets" class="py-16 bg-brand-surface/30 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-xs font-mono text-sky-400 uppercase tracking-widest">Rapid Reference</span>
+            <h2 class="text-2xl font-bold text-white">Free Interview Cheat Modules</h2>
+          </div>
+          <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">Instant Public Previews</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Cheatsheet 1 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between text-xs font-mono text-sky-400 mb-2">
+              <span>TIME & SPACE COMPLEXITY</span>
+              <i data-lucide="clock" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Big-O Master Index</h3>
+            <div class="mt-3 bg-slate-950/80 rounded-lg p-3 font-mono text-xs space-y-1 text-slate-300 border border-slate-800">
+              <div class="flex justify-between"><span>Hash Table Lookup:</span> <span class="text-emerald-400 font-bold">O(1)</span></div>
+              <div class="flex justify-between"><span>Binary Search:</span> <span class="text-sky-400 font-bold">O(log N)</span></div>
+              <div class="flex justify-between"><span>Merge Sort / Heap:</span> <span class="text-amber-400 font-bold">O(N log N)</span></div>
+              <div class="flex justify-between"><span>DFS / BFS Traversal:</span> <span class="text-sky-300 font-bold">O(V + E)</span></div>
+            </div>
+            <button onclick="viewFullModal('Big-O Master Cheatsheet', 'Complete reference of worst, average, and amortized time bounds across data structures including Skip Lists, B-Trees, and Disjoint Sets.')" class="mt-4 w-full py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-400 text-xs font-mono text-slate-200 hover:text-sky-300 transition-colors">
+              Read Detailed Breakdown &rarr;
+            </button>
+          </div>
+
+          <!-- Cheatsheet 2 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between text-xs font-mono text-cyan-400 mb-2">
+              <span>SYSTEM DESIGN FORMULAS</span>
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Back-of-Envelope Numbers</h3>
+            <div class="mt-3 bg-slate-950/80 rounded-lg p-3 font-mono text-xs space-y-1 text-slate-300 border border-slate-800">
+              <div class="flex justify-between"><span>Seconds in a day:</span> <span class="text-cyan-400 font-bold">~86,400 (8.64×10⁴)</span></div>
+              <div class="flex justify-between"><span>1 Million req/day:</span> <span class="text-sky-300 font-bold">~12 QPS</span></div>
+              <div class="flex justify-between"><span>L1 Cache Read:</span> <span class="text-emerald-400 font-bold">~0.5 ns</span></div>
+              <div class="flex justify-between"><span>RAM Read:</span> <span class="text-amber-400 font-bold">~100 ns</span></div>
+            </div>
+            <button onclick="viewFullModal('Back-of-Envelope Math', 'Essential throughput, network bandwidth calculations, disk IOPS versus SSD latency rules for FAANG system design interviews.')" class="mt-4 w-full py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-400 text-xs font-mono text-slate-200 hover:text-sky-300 transition-colors">
+              Read Detailed Breakdown &rarr;
+            </button>
+          </div>
+
+          <!-- Cheatsheet 3 -->
+          <div class="glass-card rounded-xl p-5 border border-slate-800">
+            <div class="flex items-center justify-between text-xs font-mono text-indigo-400 mb-2">
+              <span>BEHAVIORAL (STAR)</span>
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Story Framework Matrix</h3>
+            <div class="mt-3 bg-slate-950/80 rounded-lg p-3 font-mono text-xs space-y-1 text-slate-300 border border-slate-800">
+              <div class="flex justify-between"><span>Situation (15%):</span> <span class="text-slate-400 font-bold">Context & Stakes</span></div>
+              <div class="flex justify-between"><span>Task (15%):</span> <span class="text-slate-400 font-bold">Direct Objective</span></div>
+              <div class="flex justify-between"><span>Action (55%):</span> <span class="text-sky-400 font-bold">Your Direct Impact</span></div>
+              <div class="flex justify-between"><span>Result (15%):</span> <span class="text-emerald-400 font-bold">Metrics & Growth</span></div>
+            </div>
+            <button onclick="viewFullModal('STAR Behavioral Blueprint', 'Curated scripts for Conflict Resolution, Technical Disagreements, Project Failures, and Cross-Functional Deadlines.')" class="mt-4 w-full py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-400 text-xs font-mono text-slate-200 hover:text-sky-300 transition-colors">
+              Read Detailed Breakdown &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SYNTAXSHELL -->
+    <section id="about" class="py-16 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card rounded-2xl p-8 sm:p-12 border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          <div class="md:col-span-4 flex flex-col items-center justify-center text-center p-6 bg-slate-950/70 rounded-xl border border-slate-800">
+            <!-- Sleek Wolf Crest Vector Symbol Large -->
+            <div class="w-24 h-24 mb-4 flex items-center justify-center text-sky-400">
+              <svg class="w-20 h-20" viewBox="0 0 100 100" fill="currentColor">
+                <path d="M48 10 C54 18, 64 24, 76 25 C66 31, 62 38, 64 45 C73 42, 85 46, 88 53 C77 56, 70 65, 68 75 C60 68, 54 68, 48 74 C44 64, 40 56, 30 52 C38 48, 42 40, 38 32 C44 32, 47 24, 48 10 Z" fill="url(#wolfGradAbout)" />
+                <path d="M40 38 C48 38, 56 42, 56 50 C56 58, 46 62, 42 62 L42 78 L34 78 L34 38 L40 38 Z M42 46 L42 54 C46 54, 48 53, 48 50 C48 47, 46 46, 42 46 Z" fill="#070b14" />
+                <defs>
+                  <linearGradient id="wolfGradAbout" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="70%" stop-color="#38bdf8" />
+                    <stop offset="100%" stop-color="#0284c7" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white tracking-wide">SYNTAX<span class="text-sky-400">SHELL</span></h3>
+            <p class="text-xs font-mono text-slate-400 mt-1">Accuracy is better than Perfection</p>
+            <div class="mt-4 px-3 py-1 rounded bg-sky-500/10 text-sky-300 text-xs font-mono border border-sky-500/30">
+              Verified Brand Initiative
+            </div>
+          </div>
+
+          <div class="md:col-span-8 space-y-4">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Why We Built SyntaxShell
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              In a modern tech ecosystem filled with inflated course prices and shallow hype, <strong class="text-white">SyntaxShell</strong> was founded on one clear premise: <em class="text-sky-300 font-medium">real engineering demands precise execution</em>.
+            </p>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              We provide free, production-grade materials, interview preparation blueprints, and interactive roadmaps across YouTube, GitHub, Reddit, and LinkedIn. As we build authority and help hundreds of developers land dream offers, our platform remains open, accessible, and community-first.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-4 text-xs font-mono text-slate-300">
+              <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Free Open Curriculum</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> No Hidden Subscriptions</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Fast GitHub Pages Hostable</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#05080f] border-t border-slate-900 text-slate-400 text-xs py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400 font-bold font-mono text-[11px]">S</div>
+            <span class="font-extrabold text-white tracking-wider text-sm">SYNTAX<span class="text-sky-400">SHELL</span></span>
+          </div>
+          <p class="font-mono text-slate-500 text-[11px]">"Accuracy is better than Perfection"</p>
+        </div>
+
+        <!-- Social Footer Links -->
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/SyntaxShell" target="_blank" class="hover:text-white transition-colors" title="GitHub">
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </a>
+          <a href="https://www.youtube.com/@TheSyntaxShell" target="_blank" class="hover:text-red-400 transition-colors" title="YouTube">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+          </a>
+          <a href="https://www.reddit.com/user/SyntaxShell/" target="_blank" class="hover:text-orange-400 transition-colors" title="Reddit Profile">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/syntax-shell-577057403/" target="_blank" class="hover:text-sky-400 transition-colors" title="LinkedIn">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
+        <div>
+          &copy; <span id="currentYear"></span> SyntaxShell. Built for Software Engineers worldwide.
+        </div>
+        <div class="flex items-center gap-4">
+          <span>Contact: <a href="mailto:thesyntaxshell@gmail.com" class="text-sky-400 hover:underline">thesyntaxshell@gmail.com</a></span>
+          <span>•</span>
+          <button onclick="openAuthModal('login')" class="hover:text-slate-300">Member Portal</button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- AUTHENTICATION MODAL (LOGIN / REGISTER) -->
+  <div id="authModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full rounded-2xl p-6 sm:p-8 border border-sky-500/30 shadow-neon-lg relative space-y-6">
+      
+      <!-- Close Button -->
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="text-center space-y-1">
+        <div class="w-12 h-12 mx-auto rounded-xl bg-sky-500/10 border border-sky-400/40 flex items-center justify-center text-sky-400 mb-2">
+          <i data-lucide="lock" class="w-6 h-6"></i>
+        </div>
+        <h3 id="authModalTitle" class="text-xl font-bold text-white">Access SyntaxShell Vault</h3>
+        <p class="text-xs text-slate-400">100% Free Membership. Unlock deep code credentials & track your progress.</p>
+      </div>
+
+      <!-- Quick 1-Click Guest Access -->
+      <div class="p-3 bg-sky-950/30 rounded-xl border border-sky-500/30 text-center">
+        <p class="text-xs text-slate-300 mb-2">Want to explore instantly without typing credentials?</p>
+        <button onclick="demoSignIn()" class="w-full py-2 px-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono transition-all flex items-center justify-center gap-2">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          <span>Instant 1-Click Guest Login</span>
+        </button>
+      </div>
+
+      <div class="relative flex py-1 items-center">
+        <div class="flex-grow border-t border-slate-800"></div>
+        <span class="flex-shrink mx-4 text-slate-500 text-[10px] font-mono uppercase">Or Enter Email</span>
+        <div class="flex-grow border-t border-slate-800"></div>
+      </div>
+
+      <!-- Auth Form -->
+      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Your Full Name or Handle</label>
+          <input type="text" id="authNameInput" placeholder="e.g. Alex Hunter" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-sky-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Email Address</label>
+          <input type="email" id="authEmailInput" placeholder="engineer@domain.com" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-sky-400">
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-400 border border-sky-500/40 font-bold text-xs font-mono uppercase tracking-wider transition-all">
+          Sign In / Create Free Account
+        </button>
+      </form>
+
+      <!-- Feedback Banner inside Modal -->
+      <div id="modalNotice" class="hidden p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono text-center"></div>
+
+    </div>
+  </div>
+
+  <!-- DEEP CREDENTIAL DETAILS MODAL (Unlocked or Preview) -->
+  <div id="moduleDetailModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 border border-sky-500/40 shadow-neon-lg relative space-y-6">
+      
+      <button onclick="closeModuleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div id="moduleModalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 hidden max-w-sm rounded-xl p-4 bg-brand-card border border-sky-500/40 shadow-neon text-white text-xs font-mono flex items-center gap-3">
+    <i data-lucide="info" class="w-4 h-4 text-sky-400 shrink-0"></i>
+    <span id="toastMessage">Action completed</span>
+  </div>
+
+  <!-- SCRIPT LOGIC (State Management, Preview Gate, LocalStorage, Modals) -->
+  <script>
+    // State definition
+    let currentUser = null;
+    let activeCategory = 'all';
+
+    // Core Interview Modules Data (Designed for high value tech candidates)
+    const interviewModules = [
+      {
+        id: 'dsa-1',
+        category: 'dsa',
+        title: 'Core Pattern: Two Pointers & Sliding Window',
+        level: 'Essential',
+        topics: 14,
+        previewSnippet: 'Understand window expansion/contraction rules, dynamic vs fixed lengths, and subarray sum optimal boundaries.',
+        deepContent: {
+          problemList: [
+            'Longest Substring Without Repeating Characters (LeetCode 3)',
+            'Minimum Window Substring (LeetCode 76)',
+            'Trapping Rain Water (LeetCode 42)',
+            '3Sum & 4Sum Generalized Hash Reduction'
+          ],
+          keyTakeaways: 'Always track window invariants. If all numbers are non-negative, sliding window achieves O(N) where brute force is O(N²).',
+          codeSnippet: `// Sliding Window Invariant Pattern
+int minSubArrayLen(int target, vector<int>& nums) {
+    int left = 0, currentSum = 0, minLen = INT_MAX;
+    for (int right = 0; right < nums.size(); right++) {
+        currentSum += nums[right];
+        while (currentSum >= target) {
+            minLen = min(minLen, right - left + 1);
+            currentSum -= nums[left++];
+        }
+    }
+    return minLen == INT_MAX ? 0 : minLen;
+}`
+        }
+      },
+      {
+        id: 'dsa-2',
+        category: 'dsa',
+        title: 'Dynamic Programming: 1D & 2D State Transitions',
+        level: 'Intermediate/Hard',
+        topics: 22,
+        previewSnippet: 'Memoization vs Tabulation, Knapsack variations, Longest Common Subsequence, and matrix DP optimization.',
+        deepContent: {
+          problemList: [
+            'Coin Change (Unbounded Knapsack) (LeetCode 322)',
+            'Longest Increasing Subsequence O(N log N) with Binary Search',
+            'Edit Distance (2D Table Formulation) (LeetCode 72)',
+            'Burst Balloons (Interval DP)'
+          ],
+          keyTakeaways: 'Define state dp[i][j] explicitly before writing code. Identify overlapping subproblems and optimal substructure.',
+          codeSnippet: `// 0/1 Knapsack Space-Optimized
+int knapSack(int W, int wt[], int val[], int n) {
+    vector<int> dp(W + 1, 0);
+    for (int i = 0; i < n; i++) {
+        for (int w = W; w >= wt[i]; w--) {
+            dp[w] = max(dp[w], val[i] + dp[w - wt[i]]);
+        }
+    }
+    return dp[W];
+}`
+        }
+      },
+      {
+        id: 'sys-1',
+        category: 'system-design',
+        title: 'System Design: Distributed Rate Limiter',
+        level: 'FAANG High Frequency',
+        topics: 8,
+        previewSnippet: 'Token Bucket vs Leaky Bucket vs Sliding Window Log. Redis Lua scripts for concurrency and atomicity.',
+        deepContent: {
+          problemList: [
+            'Designing an API Gateway Rate Limiter (100k requests/sec)',
+            'Distributed lock contention avoidance using Redis Cluster',
+            'Handling clock drift in distributed multi-region rate limiters'
+          ],
+          keyTakeaways: 'Token Bucket is optimal for bursty traffic. Redis EVAL Lua script executes atomically preventing race conditions in memory.',
+          codeSnippet: `-- Redis Lua Script for Atomic Sliding Window Rate Limit
+local key = KEYS[1]
+local now = tonumber(ARGV[1])
+local window = tonumber(ARGV[2])
+local limit = tonumber(ARGV[3])
+local clearBefore = now - window
+
+redis.call('ZREMRANGEBYSCORE', key, 0, clearBefore)
+local currentReqs = redis.call('ZCARD', key)
+if currentReqs < limit then
+    redis.call('ZADD', key, now, now)
+    redis.call('EXPIRE', key, window)
+    return 1 -- Allowed
+else
+    return 0 -- Rejected
+end`
+        }
+      },
+      {
+        id: 'sys-2',
+        category: 'system-design',
+        title: 'System Design: Global Distributed Key-Value Store',
+        level: 'Architect Level',
+        topics: 16,
+        previewSnippet: 'Consistent Hashing, Virtual Nodes, Quorum consensus (W + R > N), LSM Trees vs B-Trees for high write throughput.',
+        deepContent: {
+          problemList: [
+            'Consistent Hash Ring partition rebalancing without full re-hash',
+            'Vector Clocks for conflicting writes resolution',
+            'SSTables, MemTable and Write-Ahead Log (WAL) mechanics'
+          ],
+          keyTakeaways: 'LSM Trees turn random disk writes into sequential disk appends, multiplying write performance tenfold compared to B-Trees.',
+          codeSnippet: `// Quorum Consensus Rule
+// N: Replicas, W: Write Ack count, R: Read Ack count
+// Strong Consistency Condition: W + R > N`
+        }
+      },
+      {
+        id: 'core-1',
+        category: 'core-cs',
+        title: 'Operating Systems: Threads, Concurrency & Deadlocks',
+        level: 'Core Fundamentals',
+        topics: 12,
+        previewSnippet: 'Process vs Thread memory layouts, Mutex vs Semaphore, context switching cost, and Coffman conditions for Deadlocks.',
+        deepContent: {
+          problemList: [
+            'Four Coffman Conditions: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait',
+            'Producer-Consumer implementation with condition variables',
+            'Virtual Memory, Page Faults, and TLB translation caches'
+          ],
+          keyTakeaways: 'Breaking any single Coffman condition renders deadlock mathematically impossible. Always order mutex acquisitions globally.',
+          codeSnippet: `// Proper Mutex Acquisition with std::scoped_lock (prevents deadlock)
+std::scoped_lock lock(mutexA, mutexB); // Deadlock safe multi-resource acquisition`
+        }
+      },
+      {
+        id: 'devops-1',
+        category: 'devops',
+        title: 'CI/CD & Cloud Infrastructure on GitHub Actions',
+        level: 'Production Grade',
+        topics: 9,
+        previewSnippet: 'Automated GitHub Pages deployment, Docker multistage builds, TLS secrets management, and zero-downtime releases.',
+        deepContent: {
+          problemList: [
+            'Configuring custom domain DNS with CNAME on GitHub Pages',
+            'Minification and asset bundle pipelines with caching',
+            'Automated linting and unit test gates on main pull requests'
+          ],
+          keyTakeaways: 'Hosting static documentation and frontends directly on GitHub Pages costs $0/month while serving global CDN speed via Fastly.',
+          codeSnippet: `# GitHub Pages Deployment Workflow
+name: Deploy SyntaxShell
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: read
+  pages: write
+  id-token: write`
+        }
+      }
+    ];
+
+    // Initialization on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('currentYear').innerText = new Date().getFullYear();
+      lucide.createIcons();
+      loadStoredAuth();
+      renderModules();
+    });
+
+    // Check stored user session in browser
+    function loadStoredAuth() {
+      try {
+        const stored = localStorage.getItem('syntaxshell_user');
+        if (stored) {
+          currentUser = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.error('Storage access error', e);
+      }
+      updateAuthUI();
+    }
+
+    // Update Header and Dashboard based on user session
+    function updateAuthUI() {
+      const container = document.getElementById('authActionsContainer');
+      const dashSection = document.getElementById('userDashboardSection');
+
+      if (currentUser) {
+        // User logged in
+        container.innerHTML = `
+          <div class="flex items-center gap-2">
+            <a href="#userDashboardSection" class="flex items-center gap-2 px-3 py-1.5 text-xs font-mono rounded-lg bg-sky-950 border border-sky-500/40 text-sky-300 hover:bg-sky-900 transition-colors">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>${escapeHtml(currentUser.name || 'Member')}</span>
+            </a>
+            <button onclick="handleLogout()" title="Sign Out" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800">
+              <i data-lucide="log-out" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+        dashSection.classList.remove('hidden');
+        document.getElementById('dashUserName').innerText = currentUser.name || 'Engineer';
+        loadDashboardData();
+      } else {
+        // Guest mode
+        container.innerHTML = `
+          <button onclick="openAuthModal('login')" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-neon font-mono">
+            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+            <span>Member Sign In</span>
+          </button>
+        `;
+        dashSection.classList.add('hidden');
+      }
+
+      // Re-render modules to update lock overlays
+      renderModules();
+      lucide.createIcons();
+    }
+
+    // Render interview path cards
+    function renderModules() {
+      const container = document.getElementById('modulesContainer');
+      if (!container) return;
+
+      const filtered = activeCategory === 'all' 
+        ? interviewModules 
+        : interviewModules.filter(m => m.category === activeCategory);
+
+      container.innerHTML = filtered.map(mod => {
+        const isUnlocked = !!currentUser;
+        const isCompleted = getCompletedStatus(mod.id);
+
+        return `
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between relative group">
+            
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono mb-3">
+                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 uppercase">${mod.category}</span>
+                <span class="text-slate-500">${mod.topics} Topics</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
+                ${mod.title}
+              </h3>
+
+              <p class="text-xs text-slate-400 mt-2 line-clamp-2">
+                ${mod.previewSnippet}
+              </p>
+
+              <!-- Preview Checklist Items -->
+              <div class="mt-4 pt-3 border-t border-slate-800 space-y-1.5 text-xs font-mono">
+                <div class="flex items-center gap-2 text-slate-300">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i>
+                  <span>Architecture & Concept Breakdown</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i>
+                  <span>Optimal Space & Time Analysis</span>
+                </div>
+                <div class="flex items-center gap-2 ${isUnlocked ? 'text-slate-300' : 'text-slate-600'}">
+                  <i data-lucide="${isUnlocked ? 'unlock' : 'lock'}" class="w-3.5 h-3.5 ${isUnlocked ? 'text-emerald-400' : 'text-slate-600'}"></i>
+                  <span>${isUnlocked ? 'Full Code & Whiteboard Scripts' : 'Locked: Code & Whiteboard Scripts'}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              ${isUnlocked ? `
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="check-${mod.id}" ${isCompleted ? 'checked' : ''} onchange="toggleModuleComplete('${mod.id}')" class="w-4 h-4 rounded text-sky-500 bg-slate-900 border-slate-700 focus:ring-0 cursor-pointer">
+                  <label for="check-${mod.id}" class="text-xs font-mono text-slate-300 cursor-pointer">${isCompleted ? 'Completed' : 'Mark Done'}</label>
+                </div>
+                <button onclick="openModuleDeepModal('${mod.id}')" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono transition-all">
+                  Access Path &rarr;
+                </button>
+              ` : `
+                <span class="text-xs font-mono text-slate-500 flex items-center gap-1">
+                  <i data-lucide="lock" class="w-3 h-3 text-sky-400"></i> Free Preview
+                </span>
+                <button onclick="openAuthModal('preview-prompt', '${mod.title}')" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-sky-500/40 hover:bg-sky-500/10 text-sky-300 font-bold text-xs font-mono transition-all">
+                  Unlock Free Access &rarr;
+                </button>
+              `}
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Filter Modules by Category
+    function filterModules(category) {
+      activeCategory = category;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.dataset.cat === category) {
+          btn.className = "cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-sky-400 bg-sky-500/20 text-sky-300";
+        } else {
+          btn.className = "cat-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 text-slate-400 hover:text-white";
+        }
+      });
+      renderModules();
+    }
+
+    // Open Deep Dive Modal for module
+    function openModuleDeepModal(moduleId) {
+      const mod = interviewModules.find(m => m.id === moduleId);
+      if (!mod) return;
+
+      const modal = document.getElementById('moduleDetailModal');
+      const content = document.getElementById('moduleModalContent');
+
+      content.innerHTML = `
+        <div class="space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div>
+              <span class="px-2 py-0.5 rounded text-xs font-mono bg-sky-500/10 text-sky-400 border border-sky-500/20 uppercase">${mod.category}</span>
+              <h2 class="text-2xl font-bold text-white mt-1">${mod.title}</h2>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase text-sky-400 font-semibold mb-2">High-Frequency Interview Problems</h4>
+            <ul class="space-y-2">
+              ${mod.deepContent.problemList.map(p => `
+                <li class="flex items-start gap-2 text-sm text-slate-300 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
+                  <i data-lucide="file-code" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span>${p}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase text-cyan-400 font-semibold mb-2">Architectural Invariants & Key Rules</h4>
+            <div class="p-3 bg-sky-950/20 border border-sky-500/20 rounded-xl text-sm text-slate-300">
+              ${mod.deepContent.keyTakeaways}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase text-slate-400 font-semibold mb-2">SyntaxShell Production Code Template</h4>
+            <pre class="bg-slate-950 p-4 rounded-xl text-xs font-mono text-sky-200 border border-slate-800 overflow-x-auto leading-relaxed"><code>${escapeHtml(mod.deepContent.codeSnippet)}</code></pre>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">Official SyntaxShell Curriculum</span>
+            <button onclick="closeModuleModal()" class="px-4 py-2 rounded-lg bg-sky-500 text-slate-950 font-bold text-xs font-mono">
+              Close Credential
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModuleModal() {
+      document.getElementById('moduleDetailModal').classList.add('hidden');
+    }
+
+    // Modal for Cheatsheet detail
+    function viewFullModal(title, description) {
+      const modal = document.getElementById('moduleDetailModal');
+      const content = document.getElementById('moduleModalContent');
+
+      content.innerHTML = `
+        <div class="space-y-6">
+          <div class="border-b border-slate-800 pb-4">
+            <span class="text-xs font-mono text-sky-400 uppercase">SYNTAXSHELL QUICK CHEATSHEET</span>
+            <h2 class="text-2xl font-bold text-white mt-1">${title}</h2>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">${description}</p>
+          <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs font-mono text-slate-400 space-y-2">
+            <p>💡 Tip: Follow our official <a href="https://github.com/SyntaxShell" target="_blank" class="text-sky-400 underline">GitHub repository</a> for printable PDF and markdown sheets.</p>
+            <p>Direct questions? Post on our <a href="https://www.reddit.com/user/SyntaxShell/" target="_blank" class="text-orange-400 underline">Reddit Community</a>.</p>
+          </div>
+          <div class="flex justify-end">
+            <button onclick="closeModuleModal()" class="px-4 py-2 rounded-lg bg-sky-500 text-slate-950 font-bold text-xs font-mono">
+              Got It
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    // Authentication Handlers
+    function openAuthModal(mode, optionalContext = '') {
+      const modal = document.getElementById('authModal');
+      const title = document.getElementById('authModalTitle');
+      if (mode === 'preview-prompt') {
+        title.innerText = 'Unlock Full Free Access';
+      } else {
+        title.innerText = 'Access SyntaxShell Vault';
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('authNameInput').value.trim();
+      const email = document.getElementById('authEmailInput').value.trim();
+
+      if (!name || !email) return;
+
+      const user = {
+        name: name,
+        email: email,
+        joinedDate: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem('syntaxshell_user', JSON.stringify(user));
+      } catch (err) {
+        console.warn('LocalStorage error', err);
+      }
+
+      currentUser = user;
+      closeAuthModal();
+      updateAuthUI();
+      showToast(`Welcome ${name}! All credentials unlocked.`);
+    }
+
+    // Quick 1-Click Guest Login for seamless UX
+    function demoSignIn() {
+      const guestUser = {
+        name: 'SyntaxExplorer',
+        email: 'thesyntaxshell@gmail.com',
+        guest: true
+      };
+      try {
+        localStorage.setItem('syntaxshell_user', JSON.stringify(guestUser));
+      } catch (e) {}
+
+      currentUser = guestUser;
+      closeAuthModal();
+      updateAuthUI();
+      showToast('Logged in as Guest Explorer (All Free Paths Unlocked)');
+    }
+
+    function handleLogout() {
+      try {
+        localStorage.removeItem('syntaxshell_user');
+      } catch (e) {}
+      currentUser = null;
+      updateAuthUI();
+      showToast('Signed out successfully.');
+    }
+
+    // Progress Tracking in LocalStorage
+    function getCompletedStatus(id) {
+      try {
+        const completed = JSON.parse(localStorage.getItem('syntaxshell_completed') || '[]');
+        return completed.includes(id);
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function toggleModuleComplete(id) {
+      try {
+        let completed = JSON.parse(localStorage.getItem('syntaxshell_completed') || '[]');
+        if (completed.includes(id)) {
+          completed = completed.filter(item => item !== id);
+        } else {
+          completed.push(id);
+        }
+        localStorage.setItem('syntaxshell_completed', JSON.stringify(completed));
+        loadDashboardData();
+      } catch (e) {}
+    }
+
+    function resetUserProgress() {
+      try {
+        localStorage.removeItem('syntaxshell_completed');
+        localStorage.removeItem('syntaxshell_notes');
+      } catch (e) {}
+      document.getElementById('userNotesInput').value = '';
+      loadDashboardData();
+      renderModules();
+      showToast('Progress and notes reset.');
+    }
+
+    function loadDashboardData() {
+      try {
+        const completed = JSON.parse(localStorage.getItem('syntaxshell_completed') || '[]');
+        const notes = localStorage.getItem('syntaxshell_notes') || '';
+        document.getElementById('userNotesInput').value = notes;
+
+        const dsaCompleted = completed.filter(id => id.startsWith('dsa')).length;
+        const sysCompleted = completed.filter(id => id.startsWith('sys')).length;
+
+        document.getElementById('statDsaText').innerText = `${dsaCompleted} / 2 Paths`;
+        document.getElementById('statDsaBar').style.width = `${(dsaCompleted / 2) * 100}%`;
+
+        document.getElementById('statSysText').innerText = `${sysCompleted} / 2 Paths`;
+        document.getElementById('statSysBar').style.width = `${(sysCompleted / 2) * 100}%`;
+
+        document.getElementById('statNotesCount').innerText = notes.length > 0 ? 'Active' : 'Empty';
+      } catch (e) {}
+    }
+
+    function saveUserNotes() {
+      const val = document.getElementById('userNotesInput').value;
+      try {
+        localStorage.setItem('syntaxshell_notes', val);
+      } catch (e) {}
+    }
+
+    // Copy to clipboard helper
+    function copyToClipboard(text) {
+      const dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+
+      const copyLabel = document.getElementById('copyBtnText');
+      if (copyLabel) {
+        copyLabel.innerText = 'Copied!';
+        setTimeout(() => copyLabel.innerText = 'Copy Email', 2500);
+      }
+      showToast(`Copied to clipboard: ${text}`);
+    }
+
+    // Toast feedback helper
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      if (!toast || !text) return;
+      text.innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    // Mobile nav toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // String escape helper
+    function escapeHtml(string) {
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>
